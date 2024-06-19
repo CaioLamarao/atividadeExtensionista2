@@ -81,3 +81,12 @@ li {
     overflow: auto; /* Permite rolagem se o conteúdo exceder o espaço */
     height: 150px; /* Altura fixa para manter dentro da sidebar */
 }
+
+.sidebar {
+    transition: margin 0.5s;
+    margin-left: -200px; /* Inicia escondido */
+}
+
+.sidebar.visible {
+    margin-left: 0; /* Expande quando ativo */
+}

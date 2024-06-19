@@ -7,31 +7,20 @@ function LoginPage() {
   const [cpf, setCpf] = useState('');
   const [birthdate, setBirthdate] = useState('');
   const [error, setError] = useState('');
-  const [errorField, setErrorField] = useState(''); // Adicionando estado para identificar o campo do erro
-  const [isInvalidCpf, setIsInvalidCpf] = useState(false); // Adicionando estado para validação de CPF
-  const [isInvalidBirthdate, setIsInvalidBirthdate] = useState(false); // Adicionando estado para validação de data de nascimento
   const navigate = useNavigate();
 
   const handleCpfChange = (event) => {
-    const originalValue = event.target.value.replace(/\D/g, '');
-    let formattedValue = '';
-    if (originalValue.length <= 11) {
-      formattedValue = originalValue
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d)/, '$1.$2')
-        .replace(/(\d{3})(\d{1,2})/, '$1-$2');
-    }
+    const formattedValue = event.target.value.replace(/\D/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2');
     setCpf(formattedValue);
   };
 
   const handleBirthdateChange = (event) => {
-    const originalValue = event.target.value.replace(/\D/g, '');
-    let formattedValue = '';
-    if (originalValue.length <= 8) {
-      formattedValue = originalValue
-        .replace(/(\d{2})(\d)/, '$1/$2')
-        .replace(/(\d{2})(\d)/, '$1/$2');
-    }
+    const formattedValue = event.target.value.replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1/$2')
+      .replace(/(\d{2})(\d)/, '$1/$2');
     setBirthdate(formattedValue);
   };
 
@@ -44,22 +33,19 @@ function LoginPage() {
       const response = await axios.post('http://localhost:3301/api/user/login', {
         cpf: cleanedCpf,
         birthdate: cleanedBirthdate
-    });
-        if (response.data.success) {
-            // Armazene o nome do usuário e redirecione para a página principal
-            localStorage.setItem('userName', response.data.user.name);
-            navigate('/foodappmain');
-        } else {
-            setError(response.data.message);
-        }
+      });
+      if (response.data.success) {
+        // Armazene o nome do usuário e redirecione para a página principal
+        localStorage.setItem('userName', response.data.user.name);
+        navigate('/foodappmain');
+      } else {
+        setError(response.data.message);
+      }
     } catch (error) {
-        setError('Erro ao tentar fazer login');
+      setError('Erro ao tentar fazer login: ' + error.message);
     }
   };
 
-
-
-  
   return (
     <div className="login-container">
       <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo"/>
@@ -72,7 +58,7 @@ function LoginPage() {
           placeholder="CPF"
           value={cpf}
           onChange={handleCpfChange}
-          className={errorField.includes('CPF') ? 'invalid' : ''}
+          className={error ? 'invalid' : ''}
           maxLength="14"
         />
         <input 
@@ -81,7 +67,7 @@ function LoginPage() {
           placeholder="Data de Nascimento"
           value={birthdate}
           onChange={handleBirthdateChange}
-          className={errorField.includes('Data de Nascimento') ? 'invalid' : ''}
+          className={error ? 'invalid' : ''}
           maxLength="10"
         />
         <button type="submit">ACESSAR</button>
