@@ -8,43 +8,53 @@ This project is a web application designed to manage food quality processes effe
 ## Features
 
 - **User Authentication**: Secure login and registration system.
-- **Dashboard**: Overview of food quality metrics and status updates.
-- **Inspection Logs**: Record and review food inspection reports.
-- **Notifications**: Real-time alerts for quality issues and updates.
-- **Data Analysis**: Tools for analyzing food quality data to identify trends and issues.
-
+- **Personalized consumption information.**
+- **Reference food tables**
+  
 ## Technologies Used
 
-- **Frontend**: React, Redux, Material-UI
-- **Backend**: Node.js, Express.js, MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
-- **Real-Time Updates**: Socket.io
+- **Frontend**: React, Express
+- **Backend**: Node.js, Express.js, Mysql
 
 ## Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/food-quality-management-app.git
+    git clone https://github.com/CaioLamarao/atividadeExtensionista2
     ```
 2. Navigate to the project directory:
     ```bash
-    cd food-quality-management-app
+    cd Atividade extensionista 2
     ```
 3. Install frontend dependencies:
     ```bash
-    cd client
+    cd front-end
     npm install
     ```
 4. Install backend dependencies:
     ```bash
-    cd server
+    cd backend
     npm install
+    ```
+5. Run Mysql Dump
+    ```bash
+    cd mysql
+    follow the instructions on dump.sql
     ```
 5. Start the development server:
     ```bash
-    cd server
-    npm run dev
+      npm install -g serve
+      serve -s build
     ```
+6. Alternate way to Start the development server:
+    ```bash
+    cd backend
+    node server.js
+    cd ..
+    cd front-end
+    npm start
+    ```
+    
 
 ## Contribution
 
