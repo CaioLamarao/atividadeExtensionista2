@@ -1,0 +1,104 @@
+.app-container {
+  font-family: 'Arial', sans-serif;  
+  background-color: #FFA500;  
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex; /* Adicionado para alinhar centralmente o conteúdo */
+  flex-direction: column; /* Organiza o conteúdo verticalmente */
+  align-items: center; /* Alinha horizontalmente ao centro */
+  height: 100vh; /* Altura total da tela */
+  justify-content: center; /* Alinha verticalmente ao centro */
+}
+
+.app-header {
+  width: 100%; /* Garante que o cabeçalho ocupe a largura total */
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto; /* Centraliza a logo horizontalmente */
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centraliza a caixa de pesquisa horizontalmente */
+}
+
+.search-box input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.weekdays-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+  width: 80%; /* Ajusta a largura para centralizar o grid */
+  margin: 0 auto; /* Centraliza o container dos dias horizontalmente */
+}
+
+.day-button {
+  background-color: #FFD700; 
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%; /* Botões expandem para preencher o espaço da coluna */
+}
+
+.day-button:hover {
+  background-color: #E0C261;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-container {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%; /* ou qualquer largura fixa */
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px; /* Largura fixa para o botão de fechar */
+  height: 30px; /* Altura fixa para o botão de fechar */
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Garante que o texto do botão alinhe bem */
+.close-button:focus,
+.close-button:hover {
+  background-color: darkred;
+}

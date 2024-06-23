@@ -1,0 +1,27 @@
+.download-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.download-container h1 {
+    width: 100%;
+}
+
+.download-container button {
+    width: 200px; 
+    padding: 10px;
+    margin: 10px 0; 
+    cursor: pointer;
+    background-color: #FFD700; 
+    border: none;
+    border-radius: 5px; 
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto; 
+  }
+  

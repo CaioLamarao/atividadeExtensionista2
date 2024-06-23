@@ -1,0 +1,47 @@
+.nutrient-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.logo {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.nutrition-table {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.nutrition-table th {
+  background-color: #f2f2f2;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #FFA500; /* Cor laranja */
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%; /* Ajuste o tamanho do botão para ser igual ao da tabela */
+}
+
+.back-button:hover {
+  background-color: #E0A500; /* Cor laranja escura ao passar o mouse */
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../LoginPage.css';
+import '../css/LoginPage.css';
 
 function LoginPage() {
   const [cpf, setCpf] = useState('');
@@ -35,12 +35,13 @@ function LoginPage() {
         birthdate: cleanedBirthdate
       });
       if (response.data.success) {
-        // Armazene o nome do usuário e redirecione para a página principal
+        // Armazene o nome do usuário junto a outras informações e redirecione para a página principal
         localStorage.setItem('userName', response.data.user.name);
         localStorage.setItem('loginCount', response.data.user.loginCount);
         localStorage.setItem('loginStreak', response.data.user.loginStreak);
         localStorage.setItem('familyMembers', response.data.user.familyMembers);
         localStorage.setItem('age', response.data.user.age);
+        localStorage.setItem('sexo', response.data.user.sexo);
         localStorage.setItem('active', response.data.user.active);
         localStorage.setItem('membersInfo', response.data.user.membersInfo);
         navigate('/foodappmain');

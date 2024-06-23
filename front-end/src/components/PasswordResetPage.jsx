@@ -1,5 +1,5 @@
 import React from 'react';
-import '../LoginPage.css'; // Reutilize o CSS para consistência
+import '../css/LoginPage.css'; // Reutilize o CSS para consistência
 
 function PasswordResetPage() {
   return (

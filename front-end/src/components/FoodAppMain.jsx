@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../FoodAppMain.css'; 
+import '../css/FoodAppMain.css'; 
 import { fetchRandomMotivationalSentence, fetchLoginCountMotivationalSentence } from '../services/sentenceService';
 
 
@@ -84,7 +84,7 @@ function UserInfoModal({ onClose }) {
   return (
     <div className="modal-background">
       <div className="modal-container">
-        <button className="close-button" onClick={onClose}>X</button>
+        <button className="close-button" onClick={onClose}></button>
         <h2>Informações do Usuário</h2>
         <p><strong>Nome:</strong> {localStorage.getItem('userName')}</p>
         <p><strong>Logins:</strong> {localStorage.getItem('loginCount')}</p>
