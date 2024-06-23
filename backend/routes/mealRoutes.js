@@ -3,6 +3,7 @@ const express = require('express');
 const mealsController = require('../controllers/mealsController');
 const router = express.Router();
 
-router.get('/random', mealsController.getRandomMeal);  // Certifique-se de que esta rota está definida
+router.get('/random', mealsController.getTwoRandomMeals); 
+router.get('/download', mealsController.downloadAllMeals);
 
 module.exports = router;

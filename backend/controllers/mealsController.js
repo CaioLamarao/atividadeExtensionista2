@@ -1,81 +1,79 @@
+const fs = require('fs');
+const { promisify } = require('util');
+const pipeline = promisify(require('stream').pipeline);
+const { Readable } = require('stream');
 const db = require('../db');
 
-exports.getAllMeals = async (req, res) => {
+
+const csvStringifier = require('csv-writer').createObjectCsvStringifier({
+    header: [
+        {id: 'id', title: 'REF'},
+        {id: 'prato', title: 'Cardápio'},
+        {id: 'weekday', title: 'Dia da semana'},
+        {id: 'components', title: 'Ingredientes'},
+        {id: 'preco_total', title: 'Preço sugerido'}
+    ]
+});
+
+const translateWeekday = (englishDay) => {
+    const days = {
+        'Sunday': 'Domingo',
+        'Monday': 'Segunda-feira',
+        'Tuesday': 'Terça-feira',
+        'Wednesday': 'Quarta-feira',
+        'Thursday': 'Quinta-feira',
+        'Friday': 'Sexta-feira',
+        'Saturday': 'Sábado'
+    };
+    return days[englishDay] || englishDay;  // Return the translation or the original if not found
+};
+
+exports.downloadAllMeals = async (req, res) => {
     try {
-        const [meals] = await db.query("SELECT * FROM meals");
-        res.json(meals);
+        // Ajustado para buscar até dois registros por dia da semana
+        const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let allMeals = [];
+        for (let day of weekdays) {
+            const [results] = await db.query("SELECT * FROM meals WHERE weekday = ? ORDER BY RAND() LIMIT 2", [day]);
+            allMeals = allMeals.concat(results.map(meal => ({
+                ...meal,
+                weekday: translateWeekday(meal.weekday)  // Translate the weekday before passing to CSV
+            })));
+        }
+
+        const csvHeader = csvStringifier.getHeaderString();
+        const csvRecords = csvStringifier.stringifyRecords(allMeals);
+        const csvStream = Readable.from([csvHeader, csvRecords]);
+        const tempFilePath = `temp_meals_${Date.now()}.csv`;
+
+        await pipeline(csvStream, fs.createWriteStream(tempFilePath));
+
+        res.download(tempFilePath, 'meals.csv', (err) => {
+            if (err) {
+                console.error('Download failed:', err);
+            }
+            // Cleanup the temp file
+            fs.unlink(tempFilePath, (err) => {
+                if (err) console.error('Error deleting temp file:', err);
+            });
+        });
     } catch (error) {
-        console.error('Error retrieving meals:', error);
+        console.error('Error retrieving and sending meals:', error);
         res.status(500).send({ message: "Database error", error });
     }
 };
 
-exports.getMealById = async (req, res) => {
+exports.getTwoRandomMeals = async (req, res) => {
     try {
-        const [meal] = await db.query("SELECT * FROM meals WHERE id = ?", [req.params.id]);
-        if (meal.length > 0) {
-            res.json(meal[0]);
+        // Seleciona dois registros aleatórios distintos da tabela 'meals'
+        const [results] = await db.query("SELECT * FROM meals ORDER BY RAND() LIMIT 2");
+        if (results.length === 2) {
+            res.json({ almoço: results[0], jantar: results[1] });
         } else {
-            res.status(404).send({ message: "Meal not found" });
+            res.status(404).send({ message: "Not enough meals found" });
         }
     } catch (error) {
-        console.error('Error retrieving meal:', error);
-        res.status(500).send({ message: "Database error", error });
-    }
-};
-
-exports.getRandomMeal = async (req, res) => {
-    try {
-        const [results] = await db.query("SELECT * FROM meals ORDER BY RAND() LIMIT 1");
-        if (results.length > 0) {
-            res.json(results[0]);
-        } else {
-            res.status(404).send({ message: "Meal not found" });
-        }
-    } catch (error) {
-        console.error('Error retrieving random meal:', error);
-        res.status(500).send({ message: "Database error", error });
-    }
-};
-
-exports.createMeal = async (req, res) => {
-    const { prato, weekday, components, preco_total } = req.body;
-    try {
-        const [result] = await db.query("INSERT INTO meals (prato, weekday, components, preco_total) VALUES (?, ?, ?, ?)", [prato, weekday, components, preco_total]);
-        res.status(201).send({ message: "Meal added successfully", mealId: result.insertId });
-    } catch (error) {
-        console.error('Error adding meal:', error);
-        res.status(400).send({ message: "Error creating meal", error });
-    }
-};
-
-exports.updateMeal = async (req, res) => {
-    const { id } = req.params;
-    const { prato, weekday, components, preco_total } = req.body;
-    try {
-        const [result] = await db.query("UPDATE meals SET prato = ?, weekday = ?, components = ?, preco_total = ? WHERE id = ?", [prato, weekday, components, preco_total, id]);
-        if (result.affectedRows > 0) {
-            res.send({ message: "Meal updated successfully" });
-        } else {
-            res.status(404).send({ message: "Meal not found" });
-        }
-    } catch (error) {
-        console.error('Error updating meal:', error);
-        res.status(500).send({ message: "Database error", error });
-    }
-};
-
-exports.deleteMeal = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const [result] = await db.query("DELETE FROM meals WHERE id = ?", [id]);
-        if (result.affectedRows > 0) {
-            res.send({ message: "Meal deleted successfully" });
-        } else {
-            res.status(404).send({ message: "Meal not found" });
-        }
-    } catch (error) {
-        console.error('Error deleting meal:', error);
+        console.error('Error retrieving random meals:', error);
         res.status(500).send({ message: "Database error", error });
     }
 };

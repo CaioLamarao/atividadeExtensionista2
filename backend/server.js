@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const foodRoutes = require('./routes/foodRoutes');  // Caminho para as rotas de alimentos
-const userRoutes = require('./routes/userRoutes');  // Caminho para as rotas de usuários
-const mealRoutes = require('./routes/mealRoutes'); // Caminho para as rotas de refeições
+const foodRoutes = require('./routes/foodRoutes');  
+const userRoutes = require('./routes/userRoutes');  
+const mealRoutes = require('./routes/mealRoutes');
+const sentenceRoutes = require('./routes/sentenceRoutes');
 const path = require('path');
 
 const app = express();
@@ -15,6 +16,8 @@ app.use(express.json());
 app.use('/api/food', foodRoutes);
 app.use('/api/user', userRoutes); 
 app.use('/api/meals', mealRoutes);
+app.use('/api/sentences', sentenceRoutes);
+
 
 // Servindo os arquivos estáticos do React
 app.use(express.static(path.join(__dirname, '../front-end/build')));
