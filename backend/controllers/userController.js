@@ -18,6 +18,7 @@ exports.login = (req, res) => {
                 familyMembers: user.family_members,
                 age: user.age,
                 active: user.active,
+                sexo: user.sexo,
                 membersInfo: user.members_info
               }
             });

@@ -1,5 +1,3 @@
-// backend/routes/sentenceRoutes.js
-
 const express = require('express');
 const sentenceController = require('../controllers/sentenceController');
 const router = express.Router();

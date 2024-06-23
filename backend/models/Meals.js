@@ -17,15 +17,39 @@ const Meals = sequelize.define('Meals', {
   },
   components: {
     type: DataTypes.TEXT,
-    allowNull: true // Se components pode ser nulo, configurado corretamente
+    allowNull: true
   },
   preco_total: {
     type: DataTypes.DECIMAL(10, 2),
-    allowNull: true // Se preco_total pode ser nulo, configurado corretamente
+    allowNull: true
+  },
+  proteina: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  carboidrato: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  gorduras: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  fibra: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  calcio: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
+  },
+  ferro: {
+    type: DataTypes.DOUBLE,
+    allowNull: true
   }
 }, {
-  tableName: 'meals', // Assegura que o modelo refira-se à tabela 'meals' no banco de dados
-  timestamps: false // Opta por não usar os campos 'createdAt' e 'updatedAt' automáticos
+  tableName: 'meals',
+  timestamps: false
 });
 
 module.exports = Meals;
