@@ -48,17 +48,17 @@ function LoginPage() {
         setError(response.data.message);
       }
     } catch (error) {
-      setError('Erro ao tentar fazer login: ' + error.message);
+      setError('Erro ao tentar fazer login:');
     }
   };
 
   return (
     <div className="login-container">
-      <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo"/>
+      <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo" />
       <h1>Bem vindo!</h1>
       <p>Entre com seus dados</p>
       <form onSubmit={handleSubmit}>
-        <input 
+        <input
           type="text"
           id="cpf"
           placeholder="CPF"
@@ -67,7 +67,7 @@ function LoginPage() {
           className={error ? 'invalid' : ''}
           maxLength="14"
         />
-        <input 
+        <input
           type="text"
           id="birthdate"
           placeholder="Data de Nascimento"

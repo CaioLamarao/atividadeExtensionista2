@@ -25,6 +25,6 @@ exports.login = (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).send({ message: "Database error", error: err });
+            res.status(500).send
         });
 };

@@ -14,8 +14,7 @@
   margin-left: 60px;
 }
 
-input[type="text"],
-button {
+input[type="text"]{
   width: 80%;
   padding: 12px;
   margin: 8px 0;
@@ -28,6 +27,8 @@ button {
   background-color: #FFD700;
   color: black;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
 
 a {
@@ -60,7 +61,6 @@ a {
 }
 
 .login-container button {
-  width: calc(100% - 40px);
   padding: 10px;
   margin: 5px 0;
   cursor: pointer;
