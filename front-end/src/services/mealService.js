@@ -16,12 +16,11 @@ export const downloadMealsCsv = async () => {
   const response = await fetch('http://localhost:3301/api/meals/download');
   if (!response.ok) throw new Error('Network response was not ok.');
 
-  // Trigger download
   const blob = await response.blob();
   const downloadUrl = window.URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = downloadUrl;
-  link.setAttribute('download', 'meals.csv'); // any other attributes as needed
+  link.setAttribute('download', 'meals.csv');
   document.body.appendChild(link);
   link.click();
   link.parentNode.removeChild(link);

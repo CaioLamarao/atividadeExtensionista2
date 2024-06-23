@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/DownloadMeal.css';  // Reutilizando o CSS para consistência
+import '../css/DownloadMeal.css';
 
 function DownloadMeals() {
   const navigate = useNavigate();
 
   const handleDownload = async () => {
-    // Lógica para baixar o CSV
     try {
       const response = await fetch('http://localhost:3301/api/meals/download');
       if (!response.ok) {
@@ -27,12 +26,12 @@ function DownloadMeals() {
   };
 
   const handleBack = () => {
-    navigate('/foodappmain');  // Retorna à página principal
+    navigate('/foodappmain');
   };
 
   return (
     <div className="download-container">
-      <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo"/>
+      <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo" />
       <h1>Baixar cardápios da semana</h1>
       <button onClick={handleDownload}>Baixar CSV</button>
       <button onClick={handleBack}>Voltar ao Menu Anterior</button>

@@ -11,11 +11,12 @@ RelMealFood.belongsTo(Meals, { foreignKey: 'meal_id' });
 Food.hasMany(RelMealFood, { foreignKey: 'food_id' });
 RelMealFood.belongsTo(Food, { foreignKey: 'food_id' });
 
-// Exporta todos os modelos
 module.exports = {
   sequelize,
   User,
   Food,
   Meals,
-  RelMealFood
+  RelMealFood,
+  Sentences,
+  Nutrient
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate para navegação
+import { useNavigate } from 'react-router-dom';
 import { fetchUserNutrients } from '../services/nutrientService';
 import '../css/NutrientDetails.css';
 
 function NutrientDetails() {
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
   const age = parseInt(localStorage.getItem('age'), 10);
   const sexo = localStorage.getItem('sexo');
   const [userNutrients, setUserNutrients] = useState(null);
@@ -18,7 +18,7 @@ function NutrientDetails() {
   }, [age, sexo]);
 
   const handleBackClick = () => {
-    navigate('/menu-details'); // Navega para o menu anterior
+    navigate('/menu-details');
   };
 
   return (

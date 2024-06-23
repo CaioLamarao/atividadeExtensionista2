@@ -5,21 +5,21 @@
 }
 
 .remove-button {
-    width: 20px; 
-    height: 20px; 
-    padding: 0; 
-    font-size: 12px;  
-    background-color: #FFD700; 
-    border: none; 
-    cursor: pointer;  
-    display: inline-flex;  
-    align-items: center;  
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 12px;
+    background-color: #FFD700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    margin-left: 10px;  
+    margin-left: 10px;
 }
 
 .sidebar {
-    background-color: #FFA500; 
+    background-color: #FFA500;
     padding: 20px;
     min-width: 250px;
     height: 150%;
@@ -31,38 +31,38 @@
 .back-button {
     width: 80%;
     padding: 10px;
-    margin-bottom: 10px; 
-    font-size: px; 
-    background-color: #FFD700; 
+    margin-bottom: 10px;
+    font-size: px;
+    background-color: #FFD700;
     border: none;
     cursor: pointer;
 }
 
 .search-input {
-    width: 80%; 
+    width: 80%;
     padding: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .search-results {
-    width: 80%; 
-    height: 150px; 
+    width: 80%;
+    height: 150px;
     background-color: #333;
-    overflow: auto; 
-    padding: 10px; 
-    margin-bottom: 20px; 
+    overflow: auto;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .logo {
-    width: 150px; 
+    width: 150px;
     height: auto;
-    margin-bottom: 55px; 
+    margin-bottom: 55px;
 
 }
 
 .info-section {
     padding-top: 15%;
-    width: 100%; 
+    width: 100%;
     cursor: pointer;
 }
 
@@ -76,7 +76,8 @@
     margin: 10px 0;
 }
 
-.nutrition-table th, .nutrition-table td {
+.nutrition-table th,
+.nutrition-table td {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -103,7 +104,7 @@
     font-size: 16px;
     cursor: pointer;
 }
-  
+
 .nutrient-link:hover {
     background-color: #E0C261;
 }

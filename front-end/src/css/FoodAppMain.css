@@ -1,31 +1,31 @@
 .app-container {
-  font-family: 'Arial', sans-serif;  
-  background-color: #FFA500;  
+  font-family: 'Arial', sans-serif;
+  background-color: #FFA500;
   color: white;
   text-align: center;
   padding: 20px;
-  display: flex; /* Adicionado para alinhar centralmente o conteúdo */
-  flex-direction: column; /* Organiza o conteúdo verticalmente */
-  align-items: center; /* Alinha horizontalmente ao centro */
-  height: 100vh; /* Altura total da tela */
-  justify-content: center; /* Alinha verticalmente ao centro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 .app-header {
-  width: 100%; /* Garante que o cabeçalho ocupe a largura total */
+  width: 100%;
   margin-bottom: 20px;
 }
 
 .logo {
   width: 50px;
   height: 50px;
-  margin: 0 auto; /* Centraliza a logo horizontalmente */
+  margin: 0 auto;
 }
 
 .search-box {
   width: 100%;
   display: flex;
-  justify-content: center; /* Centraliza a caixa de pesquisa horizontalmente */
+  justify-content: center;
 }
 
 .search-box input {
@@ -41,19 +41,19 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   padding: 10px;
-  width: 80%; /* Ajusta a largura para centralizar o grid */
-  margin: 0 auto; /* Centraliza o container dos dias horizontalmente */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .day-button {
-  background-color: #FFD700; 
+  background-color: #FFD700;
   color: white;
   border: none;
   border-radius: 10px;
   padding: 15px;
   font-size: 18px;
   cursor: pointer;
-  width: 100%; /* Botões expandem para preencher o espaço da coluna */
+  width: 100%;
 }
 
 .day-button:hover {
@@ -79,7 +79,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 50%; /* ou qualquer largura fixa */
+  width: 50%;
   position: relative;
 }
 
@@ -87,8 +87,8 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px; /* Largura fixa para o botão de fechar */
-  height: 30px; /* Altura fixa para o botão de fechar */
+  width: 30px;
+  height: 30px;
   border: none;
   background-color: red;
   color: white;
@@ -97,7 +97,6 @@
   cursor: pointer;
 }
 
-/* Garante que o texto do botão alinhe bem */
 .close-button:focus,
 .close-button:hover {
   background-color: darkred;

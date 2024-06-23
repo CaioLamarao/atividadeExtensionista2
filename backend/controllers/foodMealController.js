@@ -1,5 +1,5 @@
 exports.getMealFoods = async (req, res) => {
-    const { mealId } = req.params; 
+    const { mealId } = req.params;
     try {
         const mealFoods = await db.query(
             `SELECT * FROM relmealfoods WHERE meal_id = ?`,

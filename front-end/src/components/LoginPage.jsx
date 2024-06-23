@@ -35,7 +35,6 @@ function LoginPage() {
         birthdate: cleanedBirthdate
       });
       if (response.data.success) {
-        // Armazene o nome do usuário junto a outras informações e redirecione para a página principal
         localStorage.setItem('userName', response.data.user.name);
         localStorage.setItem('loginCount', response.data.user.loginCount);
         localStorage.setItem('loginStreak', response.data.user.loginStreak);

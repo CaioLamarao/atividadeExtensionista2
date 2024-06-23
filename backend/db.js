@@ -7,4 +7,4 @@ const db = mysql.createPool({
     database: 'foodapp'
 });
 
-module.exports = db.promise();  // Para usar promises com mysql2
+module.exports = db.promise();

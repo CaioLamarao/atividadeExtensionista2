@@ -2,9 +2,8 @@ const db = require('../db');
 
 const sentenceController = {
 
-    // Método para buscar uma frase motivacional baseada no loginStreak
     getLoginCountMessage: async (req, res) => {
-        const { loginStreak } = req.query; // Assume que loginStreak é passado como um parâmetro de query
+        const { loginStreak } = req.query;
 
         let sentenceId;
         if (loginStreak <= 1) {
@@ -30,7 +29,6 @@ const sentenceController = {
 
 
 
-    // Método para buscar uma frase motivacional aleatória
     getRandomMotivational: async (req, res) => {
         try {
             const [results] = await db.query("SELECT message FROM sentences WHERE type = 'motivacional' ORDER BY RAND() LIMIT 1");

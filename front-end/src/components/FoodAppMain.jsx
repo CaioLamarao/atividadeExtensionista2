@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/FoodAppMain.css'; 
+import '../css/FoodAppMain.css';
 import { fetchRandomMotivationalSentence, fetchLoginCountMotivationalSentence } from '../services/sentenceService';
 
 
 
 function FoodAppMain() {
   const navigate = useNavigate();
-  const userName = localStorage.getItem('userName');  // Recupera o nome do usuário do localStorage
-  const loginStreak = localStorage.getItem('loginStreak');  // Suponha que o loginStreak esteja armazenado no localStorage
+  const userName = localStorage.getItem('userName');
+  const loginStreak = localStorage.getItem('loginStreak');
   const [motivationalSentence, setMotivationalSentence] = useState('');
   const [loginSentence, setLoginCountMotivationalSentence] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Busca a frase motivacional aleatória
     fetchRandomMotivationalSentence().then(data => {
-      setMotivationalSentence(data.message); 
+      setMotivationalSentence(data.message);
     }).catch(error => {
       console.error('Error fetching motivational sentence:', error);
     });
 
-    // Busca a frase motivacional com base na contagem de logins
     if (loginStreak) {
       fetchLoginCountMotivationalSentence(loginStreak).then(data => {
         setLoginCountMotivationalSentence(data.message);
@@ -29,7 +27,7 @@ function FoodAppMain() {
         console.error('Error fetching login count motivational sentence:', error);
       });
     }
-  }, [loginStreak]);  // Dependência no loginStreak para reagir a mudanças
+  }, [loginStreak]);
 
 
 
@@ -46,8 +44,8 @@ function FoodAppMain() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo"/>
-        <h1>Bem vindo! {userName || "Usuário"}</h1> 
+        <img src="/images/curitiba-logo.png" alt="Curitiba Logo" className="logo" />
+        <h1>Bem vindo! {userName || "Usuário"}</h1>
         <p style={{ fontStyle: 'italic', fontWeight: 'bold' }}>"{motivationalSentence}"</p>
       </header>
       <button className="user-info-button" onClick={toggleUserInfoModal}>Informações de usuário</button>
@@ -67,18 +65,16 @@ function FoodAppMain() {
 }
 
 function UserInfoModal({ onClose }) {
-  // Parse JSON string to object
   const membersInfo = localStorage.getItem('membersInfo');
   let members = [];
   try {
-    // Parse only if membersInfo is not null or undefined
     if (membersInfo) {
       const parsedInfo = JSON.parse(membersInfo);
       members = parsedInfo.members || [];
     }
   } catch (error) {
     console.error("Error parsing members info:", error);
-    members = []; // Reset if parsing fails
+    members = [];
   }
 
   return (
@@ -97,7 +93,6 @@ function UserInfoModal({ onClose }) {
           {members.map((member, index) => (
             <li key={index}>
               Membro {index + 1}: {Object.entries(member).map(([key, value]) => {
-                // Assuming `value` is an object, iterate over its properties
                 return `${Object.entries(value).map(([k, v]) => `${k}: ${v}`).join(', ')}`;
               })}
             </li>

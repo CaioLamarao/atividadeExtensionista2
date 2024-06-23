@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './components/LoginPage'; // Certifique-se de que o caminho está correto
-import Foods from './components/Foods'; // Este será um novo componente para a lista de alimentos
-import PasswordResetPage from './components/PasswordResetPage'; // Este será um novo componente para a lista de alimentos
+import LoginPage from './components/LoginPage';
+import Foods from './components/Foods';
+import PasswordResetPage from './components/PasswordResetPage';
 import FoodAppMain from './components/FoodAppMain';
 import MenuDetails from './components/MenuDetails';
 import DownloadMeals from './components/DownloadMeals';
-import NutrientDetails from './components/NutrientDetails'; // Importe o novo componente
+import NutrientDetails from './components/NutrientDetails';
 
 
 
