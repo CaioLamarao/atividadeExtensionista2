@@ -1,0 +1,17 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-container h1 {
+    width: 100%;  /* Ocupa toda a largura do container */
+}
+
+.login-container button {
+    width: calc(100% - 40px); /* Mesma largura que o h1, considerando o padding */
+    padding: 10px; /* Ajuste o padding conforme necessário */
+    margin: 5px 0; /* Espaço entre os botões e outros elementos */
+    cursor: pointer;
+}

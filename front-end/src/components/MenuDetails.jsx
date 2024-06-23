@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../MenuDetails.css';
-import { fetchRandomMeal } from '../services/mealService';
+import { fetchTwoRandomMeals } from '../services/mealService';
 import { searchFoodByName } from '../services/foodService';
 
 function MenuDetails() {
@@ -22,15 +22,13 @@ function MenuDetails() {
   };
 
   useEffect(() => {
-    fetchRandomMeal().then(result => {
-      setMealDetailsAlmoço(result);
+    fetchTwoRandomMeals().then(result => {
+      setMealDetailsAlmoço(result.almoço);
+      setMealDetailsJantar(result.jantar);
     }).catch(error => {
-      console.error('Failed to fetch meal details for lunch:', error);
-    });
-    fetchRandomMeal().then(result => {
-      setMealDetailsJantar(result);
-    }).catch(error => {
-      console.error('Failed to fetch meal details for dinner:', error);
+      console.error('Failed to fetch meal details:', error);
+      setMealDetailsAlmoço({ prato: 'Erro ao carregar', components: 'Erro ao carregar' });
+      setMealDetailsJantar({ prato: 'Erro ao carregar', components: 'Erro ao carregar' });
     });
   }, []);
 

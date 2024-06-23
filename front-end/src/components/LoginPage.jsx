@@ -37,6 +37,12 @@ function LoginPage() {
       if (response.data.success) {
         // Armazene o nome do usuário e redirecione para a página principal
         localStorage.setItem('userName', response.data.user.name);
+        localStorage.setItem('loginCount', response.data.user.loginCount);
+        localStorage.setItem('loginStreak', response.data.user.loginStreak);
+        localStorage.setItem('familyMembers', response.data.user.familyMembers);
+        localStorage.setItem('age', response.data.user.age);
+        localStorage.setItem('active', response.data.user.active);
+        localStorage.setItem('membersInfo', response.data.user.membersInfo);
         navigate('/foodappmain');
       } else {
         setError(response.data.message);

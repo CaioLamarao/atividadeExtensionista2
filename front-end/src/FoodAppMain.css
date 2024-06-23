@@ -45,3 +45,46 @@
     background-color: #E0C261;
   }
   
+  .modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .modal-container {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%; /* or any fixed width */
+    position: relative;
+  }
+  
+  .close-button {
+    position: center;
+    top: 10px;
+    right: 10px;
+    width: 30px; /* Fixed width for the close button */
+    height: 30px; /* Fixed height for the close button */
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Ensure the button text aligns nicely */
+  .close-button:focus,
+  .close-button:hover {
+    background-color: darkred;
+  }
+  
